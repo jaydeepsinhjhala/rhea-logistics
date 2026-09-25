@@ -19,18 +19,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Set active nav link based on current page
-    const currentPath = window.location.pathname;
+    // Set active nav link based on scroll position
+    const sections = document.querySelectorAll('section');
     const navItems = document.querySelectorAll('.nav-links a');
-    
-    navItems.forEach(item => {
-        const itemPath = item.getAttribute('href');
-        // Match path or if both are root/index
-        if (currentPath.endsWith(itemPath) || 
-           (currentPath.endsWith('/') && itemPath === 'index.html')) {
-            item.classList.add('active');
-        } else {
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navItems.forEach(item => {
             item.classList.remove('active');
-        }
+            if (item.getAttribute('href') === `#${current}`) {
+                item.classList.add('active');
+            }
+        });
     });
 });

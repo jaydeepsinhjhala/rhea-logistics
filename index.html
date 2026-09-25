@@ -26,7 +26,7 @@
     <header>
         <div class="container header-inner">
             <div class="logo">
-                <a href="index.html">
+                <a href="#home">
                     <span class="rhea">RHEA</span>
                     <span class="logistics">LOGISTICS</span>
                 </a>
@@ -37,9 +37,9 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="nav-links">
-                    <a href="index.html" data-i18n="nav.home">Home</a>
-                    <a href="services.html" data-i18n="nav.services">Services</a>
-                    <a href="portfolio.html" data-i18n="nav.portfolio">Portfolio</a>
+                    <a href="#home" data-i18n="nav.home">Home</a>
+                    <a href="#services" data-i18n="nav.services">Services</a>
+                    <a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a>
                     <a href="#contact" data-i18n="nav.contact">Contact</a>
                 </div>
                 
@@ -56,12 +56,12 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container">
             <h1 data-i18n="hero.title" class="gradient-text">Logistics Through Innovation, Dedication, and Technology</h1>
             <p data-i18n="hero.subtitle">One-stop solutions for all kinds of logistic needs across India and worldwide.</p>
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="services.html" class="btn" data-i18n="hero.cta">Explore Our Services</a>
+                <a href="#services" class="btn" data-i18n="hero.cta">Explore Our Services</a>
                 <a href="#contact" class="btn btn-outline" style="color: white; border-color: white;" data-i18n="hero.contact_cta">Contact Us Today</a>
             </div>
         </div>
@@ -81,7 +81,6 @@
                 </div>
             </div>
             <div class="about-image">
-                <!-- Using a placeholder pattern as no specific image was provided in files. We can use a stylized div instead of broken image -->
                 <div style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: var(--border-radius); height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; box-shadow: var(--shadow-lg);">
                     <i class="fas fa-globe-americas"></i>
                 </div>
@@ -89,39 +88,105 @@
         </div>
     </section>
 
-    <!-- Services Overview Section -->
+    <!-- Services Detailed Section -->
     <section class="services bg-white" id="services">
         <div class="container">
-            <h2 class="section-title" data-i18n="services_overview.title">Our Core Services</h2>
+            <h2 class="section-title" data-i18n="services_page.title">Our Services</h2>
+            <p data-i18n="services_page.subtitle" class="text-center" style="font-size: 1.2rem; color: var(--text-muted); margin-top: -20px; margin-bottom: 40px;">Comprehensive logistic solutions tailored to your business needs.</p>
             
-            <div class="grid-4">
-                <div class="card">
-                    <i class="fas fa-truck card-icon"></i>
-                    <h3 class="card-title" data-i18n="services_overview.transport">Transportation</h3>
-                    <p data-i18n="services_overview.transport_desc">Equipped with Containerized and Body Trucks. We provide services across major cities and ports.</p>
+            <div class="grid-2">
+                <!-- Transportation -->
+                <div class="card service-detail-card">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <i class="fas fa-truck" style="font-size: 2rem; color: var(--primary-color); margin-right: 15px;"></i>
+                        <h3 data-i18n="services_page.transportation" style="margin: 0; font-size: 1.5rem;">Transportation</h3>
+                    </div>
+                    <p data-i18n="services_page.transportation_detail">Rhea Logistics is equipped with Containerized Trucks and Body Trucks. We make our repertoire of services available to clients across the country through our network of offices crisscrossing major cities and ports.</p>
                 </div>
-                
-                <div class="card">
-                    <i class="fas fa-ship card-icon"></i>
-                    <h3 class="card-title" data-i18n="services_overview.freight">Freight Forwarding</h3>
-                    <p data-i18n="services_overview.freight_desc">Best freight rates with major shipping lines linking Kandla, Mundra and Pipavav to worldwide locations.</p>
+
+                <!-- Freight Forwarding -->
+                <div class="card service-detail-card">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <i class="fas fa-ship" style="font-size: 2rem; color: var(--primary-color); margin-right: 15px;"></i>
+                        <h3 data-i18n="services_page.freight_forwarding" style="margin: 0; font-size: 1.5rem;">Freight Forwarding</h3>
+                    </div>
+                    <p data-i18n="services_page.freight_forwarding_detail">We provide forwarding and shipping services to clients. With infrastructure catering to all needs of shippers, importers, and exporters, we offer best freight rates through contracts with various liners. We link Kandla, Mundra, and Pipavav to international destinations.</p>
                 </div>
-                
-                <div class="card">
-                    <i class="fas fa-warehouse card-icon"></i>
-                    <h3 class="card-title" data-i18n="services_overview.warehousing">Warehousing</h3>
-                    <p data-i18n="services_overview.warehousing_desc">Available in and around Kandla & Mundra with the latest communication and automation facilities.</p>
+
+                <!-- Warehousing -->
+                <div class="card service-detail-card">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <i class="fas fa-warehouse" style="font-size: 2rem; color: var(--primary-color); margin-right: 15px;"></i>
+                        <h3 data-i18n="services_page.warehousing" style="margin: 0; font-size: 1.5rem;">Warehousing</h3>
+                    </div>
+                    <p data-i18n="services_page.warehousing_detail">We have warehouse space available in and around Kandla & Mundra and its hinterland. Equipped with the latest communication and automation facilities, our warehousing is an integral link in the logistics chain.</p>
                 </div>
-                
-                <div class="card">
-                    <i class="fas fa-file-signature card-icon"></i>
-                    <h3 class="card-title" data-i18n="services_overview.customs">Customs & Other</h3>
-                    <p data-i18n="services_overview.customs_desc">Custom Brokerage, Project Cargo Handling, ODC, Drawback Claims, and much more.</p>
+
+                <!-- Other Services -->
+                <div class="card service-detail-card">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <i class="fas fa-clipboard-check" style="font-size: 2rem; color: var(--primary-color); margin-right: 15px;"></i>
+                        <h3 data-i18n="services_page.other_services" style="margin: 0; font-size: 1.5rem;">Other Customized Services</h3>
+                    </div>
+                    <ul class="service-list">
+                        <li data-i18n="services_page.other_list_1">Custom Brokerage CHA, Project Cargo Handling, Packing and Palletization</li>
+                        <li data-i18n="services_page.other_list_2">Special - ODC (Over Dimensional Cargo)</li>
+                        <li data-i18n="services_page.other_list_3">Fumigation Phyto, ADC and PHO services</li>
+                        <li data-i18n="services_page.other_list_4">Pre-Shipment Advice and Documentation, Drawback Claims, Domestic Railway Clearance</li>
+                        <li data-i18n="services_page.other_list_5">Central Excise Refund, Claim & Bond, Proof of Exports</li>
+                        <li data-i18n="services_page.other_list_6">DEPB / DFIA / DFRC / Verification and DEEC Audit</li>
+                        <li data-i18n="services_page.other_list_7">Certificate of Origin, D.G.F.T Related Services</li>
+                        <li data-i18n="services_page.other_list_8">GSP Certificate, Documents legalization from consulates</li>
+                    </ul>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio bg-light" id="portfolio">
+        <div class="container">
+            <h2 class="section-title" data-i18n="portfolio_page.title">Our Clients & Industries</h2>
             
-            <div class="text-center" style="margin-top: 40px;">
-                <a href="services.html" class="btn" data-i18n="services_overview.more">View All Services</a>
+            <div style="max-width: 800px; margin: -20px auto 40px; text-align: center;">
+                <p data-i18n="portfolio_page.client_desc" style="font-size: 1.1rem; color: var(--text-muted);">Since entering the industry in 2017 with a handful of clients, we now successfully manage a large client portfolio across the country and overseas through sheer determination and hard work.</p>
+            </div>
+
+            <h3 class="text-center" data-i18n="portfolio_page.industries_title" style="margin-bottom: 30px; font-size: 1.8rem; color: var(--bg-dark);">Industries We Serve</h3>
+            
+            <div class="grid-4">
+                <div class="card text-center" style="padding: 30px 15px;">
+                    <i class="fas fa-cogs" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h4 data-i18n="portfolio_page.industry_engineering" style="font-size: 1.1rem; margin: 0;">Engineering</h4>
+                </div>
+                <div class="card text-center" style="padding: 30px 15px;">
+                    <i class="fas fa-flask" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h4 data-i18n="portfolio_page.industry_chemicals" style="font-size: 1.1rem; margin: 0;">Chemicals</h4>
+                </div>
+                <div class="card text-center" style="padding: 30px 15px;">
+                    <i class="fas fa-box" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h4 data-i18n="portfolio_page.industry_plastics" style="font-size: 1.1rem; margin: 0;">Plastics</h4>
+                </div>
+                <div class="card text-center" style="padding: 30px 15px;">
+                    <i class="fas fa-seedling" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h4 data-i18n="portfolio_page.industry_agro" style="font-size: 1.1rem; margin: 0;">Agro Products</h4>
+                </div>
+                <div class="card text-center" style="padding: 30px 15px;">
+                    <i class="fas fa-paint-brush" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h4 data-i18n="portfolio_page.industry_handicrafts" style="font-size: 1.1rem; margin: 0;">Handicrafts</h4>
+                </div>
+                <div class="card text-center" style="padding: 30px 15px;">
+                    <i class="fas fa-microchip" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h4 data-i18n="portfolio_page.industry_electronics" style="font-size: 1.1rem; margin: 0;">Electronics</h4>
+                </div>
+                <div class="card text-center" style="padding: 30px 15px;">
+                    <i class="fas fa-tshirt" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h4 data-i18n="portfolio_page.industry_textiles" style="font-size: 1.1rem; margin: 0;">Textiles</h4>
+                </div>
+                <div class="card text-center" style="padding: 30px 15px;">
+                    <i class="fas fa-truck-loading" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h4 data-i18n="portfolio_page.industry_machinery" style="font-size: 1.1rem; margin: 0;">Machinery & Project Cargo</h4>
+                </div>
             </div>
         </div>
     </section>
@@ -146,9 +211,9 @@
                 <div class="footer-col">
                     <h4 data-i18n="footer.quick_links">Quick Links</h4>
                     <ul class="contact-info">
-                        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-                        <li><a href="services.html" data-i18n="nav.services">Services</a></li>
-                        <li><a href="portfolio.html" data-i18n="nav.portfolio">Portfolio</a></li>
+                        <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                        <li><a href="#services" data-i18n="nav.services">Services</a></li>
+                        <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
                     </ul>
                 </div>
                 

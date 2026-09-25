@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Logistics Through Innovation, Dedication, and Technology",
+    "subtitle": "One-stop solutions for all kinds of logistic needs across India and worldwide.",
+    "cta": "Explore Our Services",
+    "contact_cta": "Contact Us Today"
+  },
+  "about": {
+    "title": "About Rhea Logistics",
+    "desc1": "Rhea Logistics, born out of sheer vision, is a saga of a global corporate. We began with enterprises exporting and importing goods to and from India, and steadily built operational bases across vital business hubs.",
+    "desc2": "We provide planning, implementing, and controlling of the efficient flow of goods, services, and information from origin to consumption.",
+    "mission_title": "Our Mission",
+    "mission_text": "\"Our main objective is to deliver excellent value to our customers & also create value for our employees & society at large.\""
+  },
+  "services_overview": {
+    "title": "Our Core Services",
+    "transport": "Transportation",
+    "transport_desc": "Equipped with Containerized and Body Trucks. We provide services across major cities and ports.",
+    "freight": "Freight Forwarding",
+    "freight_desc": "Best freight rates with major shipping lines linking Kandla, Mundra and Pipavav to worldwide locations.",
+    "warehousing": "Warehousing",
+    "warehousing_desc": "Available in and around Kandla & Mundra with the latest communication and automation facilities.",
+    "customs": "Customs & Other Services",
+    "customs_desc": "Custom Brokerage, Project Cargo Handling, ODC, Drawback Claims, and much more.",
+    "more": "View All Services"
+  },
+  "footer": {
+    "about": "Knowledge, commitment, proactivity, and professionalism comprise our identity.",
+    "quick_links": "Quick Links",
+    "contact_us": "Contact Us",
+    "gandhidham": "Gandhidham Office",
+    "gandhidham_address": "Office No.1, First Floor, Vandana Commercial Center, Plot No 280, Ward 12/B, Gandhidham, Gujarat.",
+    "mundra": "Mundra Office",
+    "mundra_address": "Plot No. 149, Survey no 169/P, Dhrub GIDC, Mundra, Gujarat.",
+    "rights": "© 2023 Rhea Logistics. All rights reserved."
+  },
+  "services_page": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive logistic solutions tailored to your business needs.",
+    "transportation": "Transportation",
+    "transportation_detail": "Rhea Logistics is equipped with Containerized Trucks and Body Trucks. We make our repertoire of services available to clients across the country through our network of offices crisscrossing major cities and ports.",
+    "freight_forwarding": "Freight Forwarding",
+    "freight_forwarding_detail": "We provide forwarding and shipping services to clients. With infrastructure catering to all needs of shippers, importers, and exporters, we offer best freight rates through contracts with various liners. We link Kandla, Mundra, and Pipavav to international destinations.",
+    "warehousing": "Warehousing",
+    "warehousing_detail": "We have warehouse space available in and around Kandla & Mundra and its hinterland. Equipped with the latest communication and automation facilities, our warehousing is an integral link in the logistics chain.",
+    "other_services": "Other Customized Services",
+    "other_list_1": "Custom Brokerage CHA, Project Cargo Handling, Packing and Palletization",
+    "other_list_2": "Special - ODC (Over Dimensional Cargo)",
+    "other_list_3": "Fumigation Phyto, ADC and PHO services",
+    "other_list_4": "Pre-Shipment Advice and Documentation, Drawback Claims, Domestic Railway Clearance",
+    "other_list_5": "Central Excise Refund, Claim & Bond, Proof of Exports",
+    "other_list_6": "DEPB / DFIA / DFRC / Verification and DEEC Audit",
+    "other_list_7": "Certificate of Origin, D.G.F.T Related Services",
+    "other_list_8": "GSP Certificate, Documents legalization from consulates"
+  },
+  "portfolio_page": {
+    "title": "Our Clients & Industries",
+    "subtitle": "Trusted by major players across diverse business sectors.",
+    "industries_title": "Industries We Serve",
+    "industry_engineering": "Engineering",
+    "industry_chemicals": "Chemicals",
+    "industry_plastics": "Plastics",
+    "industry_agro": "Agro Products",
+    "industry_handicrafts": "Handicrafts",
+    "industry_electronics": "Electronics",
+    "industry_textiles": "Textiles",
+    "industry_machinery": "Machinery & Project Cargo",
+    "client_desc": "Since entering the industry in 2017 with a handful of clients, we now successfully manage a large client portfolio across the country and overseas through sheer determination and hard work."
+  }
+}

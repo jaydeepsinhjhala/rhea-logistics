@@ -18,17 +18,11 @@
     "mission_title": "Our Mission",
     "mission_text": "\"Our main objective is to deliver excellent value to our customers & also create value for our employees & society at large.\""
   },
-  "services_overview": {
-    "title": "Our Core Services",
-    "transport": "Transportation",
-    "transport_desc": "Equipped with Containerized and Body Trucks. We provide services across major cities and ports.",
-    "freight": "Freight Forwarding",
-    "freight_desc": "Best freight rates with major shipping lines linking Kandla, Mundra and Pipavav to worldwide locations.",
-    "warehousing": "Warehousing",
-    "warehousing_desc": "Available in and around Kandla & Mundra with the latest communication and automation facilities.",
-    "customs": "Customs & Other Services",
-    "customs_desc": "Custom Brokerage, Project Cargo Handling, ODC, Drawback Claims, and much more.",
-    "more": "View All Services"
+  "stats": {
+    "years": "Years Experience",
+    "clients": "Happy Clients",
+    "bases": "Operational Bases",
+    "industries": "Industries Served"
   },
   "footer": {
     "about": "Knowledge, commitment, proactivity, and professionalism comprise our identity.",
@@ -38,7 +32,7 @@
     "gandhidham_address": "Office No.1, First Floor, Vandana Commercial Center, Plot No 280, Ward 12/B, Gandhidham, Gujarat.",
     "mundra": "Mundra Office",
     "mundra_address": "Plot No. 149, Survey no 169/P, Dhrub GIDC, Mundra, Gujarat.",
-    "rights": "© 2023 Rhea Logistics. All rights reserved."
+    "rights": "© 2026 Rhea Logistics. All rights reserved."
   },
   "services_page": {
     "title": "Our Services",

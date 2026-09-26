@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            const expanded = navLinks.classList.contains('active');
+            mobileMenuBtn.setAttribute('aria-expanded', expanded);
             const icon = mobileMenuBtn.querySelector('i');
             if (icon) {
                 if (navLinks.classList.contains('active')) {
@@ -28,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('click', () => {
             if (navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
                 const icon = mobileMenuBtn.querySelector('i');
                 if (icon) {
                     icon.classList.remove('fa-times');
@@ -39,13 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', () => {
         let current = '';
-        sections.forEach(section => {
+        const navSections = document.querySelectorAll('section[id="home"], section[id="services"], section[id="portfolio"]');
+        navSections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - 200)) {
+            if (window.scrollY >= (sectionTop - 200)) {
                 current = section.getAttribute('id');
             }
         });
+
+        // Also check footer for "contact"
+        const footer = document.getElementById('contact');
+        if (footer && window.scrollY >= (footer.offsetTop - 200)) {
+            current = 'contact';
+        }
 
         navItems.forEach(item => {
             item.classList.remove('active');

@@ -30,11 +30,21 @@ if (!supportedLanguages.includes(currentLang)) {
 // overwrite the language the user picked afterwards.
 let latestRequest = 0;
 
+// lang-init.js may already have started this download in <head>; use it once.
+function fetchLanguageFile(lang) {
+    const early = window.rheaLangPreload;
+    if (early && early.lang === lang) {
+        window.rheaLangPreload = null;
+        return early.request;
+    }
+    return fetch(`lang/${lang}.json`);
+}
+
 // Resolves to { lang, translations } for the language actually loaded
 // (English if the requested one failed), or null if nothing could be loaded.
 async function loadTranslations(lang) {
     try {
-        const response = await fetch(`lang/${lang}.json`);
+        const response = await fetchLanguageFile(lang);
         if (!response.ok) {
             throw new Error(`Failed to load ${lang}.json`);
         }
@@ -90,15 +100,15 @@ async function changeLanguage(lang) {
     // Keep the selector and <html lang> in line with what is on screen, even
     // when loading failed or fell back to English.
     const select = document.getElementById('lang-select');
-    if (!result) {
-        if (select) select.value = currentLang;
-        return;
+    if (result) {
+        applyTranslations(result.translations);
+        currentLang = result.lang;
     }
-
-    applyTranslations(result.translations);
-    currentLang = result.lang;
     document.documentElement.lang = currentLang;
     if (select) select.value = currentLang;
+
+    // Text hidden by lang-init.js can be shown now, translated or not
+    document.documentElement.classList.remove('i18n-pending');
 }
 
 document.addEventListener('DOMContentLoaded', () => {

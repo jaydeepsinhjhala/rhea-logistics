@@ -65,6 +65,13 @@ main:focus {
   outline: none;
 }
 
+/* Set by js/lang-init.js while a saved Hindi/Gujarati translation loads, so
+   English text is not shown first. Layout is kept; only the text is hidden. */
+.i18n-pending [data-i18n],
+.i18n-pending #lang-select {
+  visibility: hidden;
+}
+
 body {
   font-family: var(--font-main);
   color: var(--text-dark);

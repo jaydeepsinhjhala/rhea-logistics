@@ -1,11 +1,37 @@
 // i18n engine
 const supportedLanguages = ['en', 'gu', 'hi'];
-let currentLang = localStorage.getItem('rhea_lang') || 'en';
+const STORAGE_KEY = 'rhea_lang';
+
+// localStorage can throw (blocked cookies, some private modes); without these
+// guards the whole script fails and the language selector stops working.
+function readStoredLanguage() {
+    try {
+        return localStorage.getItem(STORAGE_KEY);
+    } catch (error) {
+        return null;
+    }
+}
+
+function storeLanguage(lang) {
+    try {
+        localStorage.setItem(STORAGE_KEY, lang);
+    } catch (error) {
+        // Storage unavailable: the choice still applies, it just won't persist.
+    }
+}
+
+let currentLang = readStoredLanguage() || 'en';
 
 if (!supportedLanguages.includes(currentLang)) {
     currentLang = 'en';
 }
 
+// Incremented per request so a slow response for an earlier choice cannot
+// overwrite the language the user picked afterwards.
+let latestRequest = 0;
+
+// Resolves to { lang, translations } for the language actually loaded
+// (English if the requested one failed), or null if nothing could be loaded.
 async function loadTranslations(lang) {
     try {
         const response = await fetch(`lang/${lang}.json`);
@@ -13,7 +39,7 @@ async function loadTranslations(lang) {
             throw new Error(`Failed to load ${lang}.json`);
         }
         const translations = await response.json();
-        return translations;
+        return { lang, translations };
     } catch (error) {
         console.error('Error loading translations:', error);
         // Fallback to English if translation fails to load
@@ -25,12 +51,10 @@ async function loadTranslations(lang) {
 }
 
 function applyTranslations(translations) {
-    if (!translations) return;
-
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(element => {
         const key = element.getAttribute('data-i18n');
-        
+
         // Handle nested keys e.g. "header.home"
         const keys = key.split('.');
         let value = translations;
@@ -43,7 +67,7 @@ function applyTranslations(translations) {
             }
         }
 
-        if (value) {
+        if (typeof value === 'string') {
             // Check if element is an input with placeholder
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 if (element.hasAttribute('placeholder')) {
@@ -54,36 +78,44 @@ function applyTranslations(translations) {
             }
         }
     });
-
-    document.documentElement.lang = currentLang;
 }
 
 async function changeLanguage(lang) {
     if (!supportedLanguages.includes(lang)) return;
-    
-    currentLang = lang;
-    localStorage.setItem('rhea_lang', lang);
-    
+
+    const request = ++latestRequest;
+    const result = await loadTranslations(lang);
+    if (request !== latestRequest) return;
+
+    // Keep the selector and <html lang> in line with what is on screen, even
+    // when loading failed or fell back to English.
     const select = document.getElementById('lang-select');
-    if (select) {
-        select.value = lang;
+    if (!result) {
+        if (select) select.value = currentLang;
+        return;
     }
 
-    const translations = await loadTranslations(lang);
-    applyTranslations(translations);
+    applyTranslations(result.translations);
+    currentLang = result.lang;
+    document.documentElement.lang = currentLang;
+    if (select) select.value = currentLang;
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
+    // The page ships in English, so that is what is on screen until a load succeeds
+    const initialLang = currentLang;
+    currentLang = 'en';
+
     // Initialize Language Selector
     const langSelect = document.getElementById('lang-select');
     if (langSelect) {
-        langSelect.value = currentLang;
+        langSelect.value = initialLang;
         langSelect.addEventListener('change', (e) => {
+            storeLanguage(e.target.value);
             changeLanguage(e.target.value);
         });
     }
 
     // Initial load
-    const translations = await loadTranslations(currentLang);
-    applyTranslations(translations);
+    changeLanguage(initialLang);
 });

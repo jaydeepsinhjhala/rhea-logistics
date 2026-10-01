@@ -3,64 +3,83 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
+    function setMenuOpen(open) {
+        navLinks.classList.toggle('active', open);
+        mobileMenuBtn.setAttribute('aria-expanded', open);
+        const icon = mobileMenuBtn.querySelector('i');
+        if (icon) {
+            icon.classList.toggle('fa-bars', !open);
+            icon.classList.toggle('fa-times', open);
+        }
+    }
+
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const expanded = navLinks.classList.contains('active');
-            mobileMenuBtn.setAttribute('aria-expanded', expanded);
-            const icon = mobileMenuBtn.querySelector('i');
-            if (icon) {
-                if (navLinks.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
+            setMenuOpen(!navLinks.classList.contains('active'));
+        });
+
+        // Escape closes the open menu and returns focus to its button
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                setMenuOpen(false);
+                mobileMenuBtn.focus();
             }
         });
     }
 
-    // Set active nav link based on scroll position
-    const sections = document.querySelectorAll('section');
     const navItems = document.querySelectorAll('.nav-links a');
 
     // Close mobile menu when a link is clicked
     navItems.forEach(item => {
         item.addEventListener('click', () => {
             if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                const icon = mobileMenuBtn.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
+                setMenuOpen(false);
             }
         });
     });
 
-    window.addEventListener('scroll', () => {
+    // Set active nav link based on scroll position
+    const spyTargets = ['home', 'services', 'portfolio', 'contact']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+    function updateActiveLink() {
         let current = '';
-        const navSections = document.querySelectorAll('section[id="home"], section[id="services"], section[id="portfolio"]');
-        navSections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (window.scrollY >= (sectionTop - 200)) {
-                current = section.getAttribute('id');
+        spyTargets.forEach(target => {
+            if (window.scrollY >= (target.offsetTop - 200)) {
+                current = target.id;
             }
         });
 
-        // Also check footer for "contact"
-        const footer = document.getElementById('contact');
-        if (footer && window.scrollY >= (footer.offsetTop - 200)) {
+        // The footer is too short to reach the threshold on tall screens,
+        // so treat the bottom of the page as the contact section.
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        if (atBottom && document.getElementById('contact')) {
             current = 'contact';
         }
 
         navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href') === `#${current}`) {
-                item.classList.add('active');
+            const isActive = item.getAttribute('href') === `#${current}`;
+            item.classList.toggle('active', isActive);
+            if (isActive) {
+                item.setAttribute('aria-current', 'location');
+            } else {
+                item.removeAttribute('aria-current');
             }
         });
-    });
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(() => {
+            updateActiveLink();
+            ticking = false;
+        });
+    }, { passive: true });
+
+    // Also run once now, so a page opened at an anchor (e.g. #services)
+    // highlights the right link before the user scrolls
+    updateActiveLink();
 });

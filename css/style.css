@@ -516,6 +516,16 @@ footer {
   margin: 0;
 }
 
+/* Map */
+.locations {
+  padding: 0;
+  line-height: 0;
+}
+
+.locations iframe {
+  border: 0;
+}
+
 /* Footer Logo */
 .footer-logo-text {
   font-size: 1.8rem;

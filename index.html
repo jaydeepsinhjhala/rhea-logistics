@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Only allow what the page actually uses. GitHub Pages cannot send
+         headers, so this lives here; any new external resource must be added. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://cdnjs.cloudflare.com; font-src https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
     <title>Rhea Logistics | Logistics through innovation, dedication, and technology</title>
     <meta name="description" content="Rhea Logistics provides transportation, freight forwarding, warehousing, and customs services across India and worldwide.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚛</text></svg>">
@@ -11,7 +14,16 @@
     <meta property="og:title" content="Rhea Logistics">
     <meta property="og:description" content="One-stop solutions for all kinds of logistic needs.">
     <meta property="og:type" content="website">
-    
+    <meta property="og:site_name" content="Rhea Logistics">
+    <meta property="og:url" content="https://jaydeepsinhjhala.github.io/rhea-logistics/">
+    <meta property="og:image" content="https://jaydeepsinhjhala.github.io/rhea-logistics/images/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Rhea Logistics: Logistics Through Innovation, Dedication, and Technology. Transportation, freight forwarding, warehousing and customs from Gandhidham and Mundra, Gujarat.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image:alt" content="Rhea Logistics: Logistics Through Innovation, Dedication, and Technology. Transportation, freight forwarding, warehousing and customs from Gandhidham and Mundra, Gujarat.">
+
     <!-- Fonts and Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
@@ -220,12 +232,11 @@
     </section>
 
     <!-- Map & Locations Section -->
-    <section class="locations bg-white" style="padding: 0; line-height: 0;">
+    <section class="locations bg-white">
         <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117282.85966696773!2d70.0468971034444!3d23.090623953503295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3950b8b60f1c6e11%3A0xcaf245ec48df0844!2sGandhidham%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1698748374945!5m2!1sen!2sin" 
             width="100%" 
             height="400" 
-            style="border:0;" 
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade"

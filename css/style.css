@@ -1,6 +1,10 @@
 :root {
   --primary-color: #3eb091;
   --primary-dark: #2a8a6d;
+  /* Darker brand green for white text on green and green text on light
+     backgrounds; --primary-color fails WCAG AA contrast in those uses. */
+  --primary-strong: #217a60;
+  --primary-strong-hover: #1a614c;
   --secondary-color: #4a7ab5;
   --accent-color: #673ab7;
   --bg-dark: #2c2e33;
@@ -8,7 +12,7 @@
   --bg-light: #f8f9fa;
   --text-dark: #333333;
   --text-light: #ffffff;
-  --text-muted: #6c757d;
+  --text-muted: #5c636a;
   --font-main: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
   --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
@@ -37,6 +41,28 @@ html {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  z-index: 1001;
+  padding: 10px 16px;
+  background-color: var(--primary-strong);
+  color: var(--text-light);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  font-weight: 600;
+  transition: none;
+}
+
+.skip-link:focus {
+  top: 0;
+  color: var(--text-light);
+}
+
+main:focus {
+  outline: none;
 }
 
 body {
@@ -107,13 +133,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-center { text-align: center; }
-.text-primary { color: var(--primary-color); }
+.text-primary { color: var(--primary-strong); }
 
 /* Buttons */
 .btn {
   display: inline-block;
   padding: 12px 24px;
-  background-color: var(--primary-color);
+  background-color: var(--primary-strong);
   color: var(--text-light);
   border: none;
   border-radius: var(--border-radius);
@@ -125,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn:hover {
-  background-color: var(--primary-dark);
+  background-color: var(--primary-strong-hover);
   color: var(--text-light);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
@@ -133,12 +159,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-outline {
   background-color: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
+  border: 2px solid var(--primary-strong);
+  color: var(--primary-strong);
 }
 
 .btn-outline:hover {
-  background-color: var(--primary-color);
+  background-color: var(--primary-strong);
   color: var(--text-light);
 }
 
@@ -156,7 +182,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  /* Vertical only, so the .container side gutters still apply */
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .logo a {
@@ -290,7 +318,7 @@ section {
   color: var(--text-muted);
 }
 .mission-box {
-  background-color: var(--primary-color);
+  background-color: var(--primary-strong);
   color: #fff;
   padding: 25px;
   border-radius: var(--border-radius);
@@ -386,7 +414,7 @@ footer {
 
 .btn-outline-white:hover {
   background-color: white;
-  color: var(--primary-color);
+  color: var(--primary-strong);
 }
 
 /* About Image Placeholder */
@@ -415,6 +443,8 @@ footer {
 
 .stat-number {
   font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
   color: #fff;
   margin-bottom: 5px;
 }
@@ -500,19 +530,6 @@ footer {
   color: var(--primary-color);
 }
 
-/* Social Links */
-.social-links {
-  font-size: 1.5rem;
-}
-
-.social-links a {
-  margin-right: 15px;
-}
-
-.social-links a:last-child {
-  margin-right: 0;
-}
-
 /* Footer Spacing */
 .footer-col .logo {
   margin-bottom: 20px;
@@ -544,13 +561,18 @@ footer {
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
+    /* visibility keeps the collapsed links out of the tab order; its
+       transition is delayed so the close animation can finish first */
+    visibility: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease, visibility 0s linear 0.3s;
     display: flex;
   }
   
   .nav-links.active {
     max-height: 300px;
     padding: 20px 0;
+    visibility: visible;
+    transition: max-height 0.3s ease, padding 0.3s ease, visibility 0s;
   }
   
   .mobile-menu-btn {
@@ -566,4 +588,21 @@ footer {
   .lang-selector {
     margin-left: 15px;
   }
+}
+
+/* Small phones: shrink the header so logo, menu button and language
+   select fit without being clipped off the right edge */
+@media (max-width: 400px) {
+  .header-inner .logo a { font-size: 1.35rem; }
+  .lang-selector { margin-left: 10px; }
+  .lang-selector select { padding: 5px 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .btn:hover, .card:hover { transform: none; }
 }

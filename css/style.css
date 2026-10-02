@@ -287,11 +287,9 @@ section {
 .bg-light { background-color: var(--bg-light); }
 .bg-white { background-color: #fff; }
 .bg-dark { background-color: var(--bg-dark); color: var(--text-light); }
-.bg-dark .section-title { color: var(--text-light); }
 
 /* Grid Layouts */
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; align-items: center; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 
 /* Cards */
@@ -302,11 +300,6 @@ section {
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
   height: 100%;
-}
-
-.bg-dark .card {
-  background-color: var(--bg-darker);
-  color: var(--text-light);
 }
 
 .card:hover {
@@ -337,6 +330,16 @@ section {
   font-style: italic;
   font-weight: 500;
 }
+.profile-download {
+  margin-top: 25px;
+}
+.profile-download .fa-file-pdf {
+  margin-right: 8px;
+}
+.profile-download .file-meta {
+  font-weight: 400;
+  white-space: nowrap;
+}
 
 /* Services Page specific */
 .service-detail-card {
@@ -358,8 +361,6 @@ section {
   color: var(--primary-color);
   font-weight: bold;
 }
-
-/* Portfolio Page specific */
 
 /* Contact/Footer */
 footer {
@@ -562,7 +563,7 @@ footer {
 
 /* Responsive */
 @media (max-width: 992px) {
-  .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .hero h1 { font-size: 2.8rem; }
 }
 
@@ -596,7 +597,7 @@ footer {
     display: block;
   }
   
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .grid-2, .grid-4 { grid-template-columns: 1fr; }
   section { padding: 50px 0; }
   .hero { padding: 60px 0; }
   .hero h1 { font-size: 2.2rem; }
